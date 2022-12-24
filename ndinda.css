@@ -328,9 +328,36 @@ nav{
     margin: 0 auto;
 }
 
+.about-me__img{
+    box-shadow: var(--bs);
+}
 @media (min-width: 600px) {
     .about-me {
         display: grid;
         grid-template-columns: 1fr 200px;
+        grid-template-areas: 
+          'title img'
+          'subtitle img'
+          'text img';
+         grid-column-gap: 2em;/* space btwn img and others */
+
+    }
+
+    .section__title--about{
+        grid-area: title;
+    }
+    .section__subtitle--about{
+        grid-column: 1/-1;
+        grid-row: 2;
+        position: relative;
+        left: -1em;
+        width: calc(100% + 2em);/*extends the line over the img*/
+        padding-left: 1em;
+        padding-right:calc(200px + 4em)/*the padding stops the subtitle text from going into the img*/
+    }
+    .about-me__img {
+        grid-area: img;
+        position: relative;
+        z-index: 2;
     }
 }
