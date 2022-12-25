@@ -119,7 +119,7 @@ input, select {
     --fw-reg: 300;
     --fw-bold: 900;
 
-    --crl-light: #fff;
+    --clr-light: #fff;
     --clr-dark: #303030;
     --clr-accent: #16e0bd;
 
@@ -235,9 +235,97 @@ h3{font-size: var(--fs-h3)}
 
 /*HEADER*/
 
-nav{
-    display: none;
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
 }
+
+/* styling the hidden nav */
+.nav{
+    position: fixed;
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index:  100;
+
+    transform: translateX(100%);
+    transition: transform 250ms cubic-bezier(.5, 0, .5, 1);
+}
+
+.nav__list{
+    display: flex;
+    list-style: none;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* adjust the spaces above and around */
+    margin: 0;
+    padding: 0;
+}
+
+.nav__link{
+    color:inherit;
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-h3);
+    text-decoration: none;
+}
+
+.nav__link:hover{
+    color: var(--clr-accent);
+}
+
+.nav_toggle{
+    padding: .5em;
+    background: transparent;
+    border:0;
+    cursor: pointer;
+    position: absolute;
+    right: 1em;/*to return it to position  */
+    top: 1em;
+    z-index: 1000;
+
+}
+
+.icon{
+    display: block;
+    position: relative;
+    
+}
+
+.icon,
+.icon::before,
+.icon::after {
+    background: var(--clr-dark);
+    width: 2em;
+    height: 3px;
+    border-radius: 1em;
+    transition: transform 250ms ease-in-out;
+    
+}
+
+
+
+.icon::before,
+.icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+
+}
+
+/* to setup a few lines,6px translates to a line of 3px,an empty space of 3px */
+.icon::before {top: 6px;}
+.icon::after {bottom: 6px;}
+
+/* nav{
+    display: none;
+} */
 
 /* INtroduction Section*/
 
@@ -330,6 +418,8 @@ nav{
     }
 }
 
+/* About me */
+
 .about-me{
     max-width: 1000px;
     margin: 0 auto;
@@ -369,6 +459,7 @@ nav{
     }
 }
 
+/* My work ,portfolio */
 
 .my-work{
     background-color: var(--clr-dark);
@@ -387,6 +478,11 @@ nav{
     overflow: hidden;
 }
 
+.portfolio__item:focus{
+    position:relative;
+    z-index:2;
+}
+
 .portfolio__img{
     transition:
       transform 750ms cubic-bezier(.5, 0, .5, 1),
@@ -397,4 +493,44 @@ nav{
 .portfolio__item:focus .portfolio__img{
     transform: scale(1.2);
     opacity: .5;
+}
+
+/* footer */
+
+.footer{
+    background-color: #111;
+    color: var(--clr-accent);
+    text-align: center;
+    padding: 2.5em, 0;
+    font-size: var(--fs-h3);
+}
+
+.footer a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer__link{
+   font-weight: var(--fw-bold);
+}
+
+.footer__link:hover,
+.social-list__link:hover{
+    opacity: .7;
+}
+
+.footer__link:hover{
+    text-decoration: underline;
+}
+
+.social-list{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 2em 0 0;
+    padding: 0;
+}
+
+.social-list__item{
+    margin: 0 .5em;
 }
