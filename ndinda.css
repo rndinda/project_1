@@ -146,6 +146,10 @@ input, select {
 
 /* General properties*/
 
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     background: rgb(107, 85, 85);
     color: var(--clr-light);
@@ -171,7 +175,7 @@ strong{
     outline: 3px solid var(--clr-accent);
     outline-offset: 3px;
 }
-.btn{
+.btn {
     display: inline-block;
     padding: .5em 1.5em;
     background: var(--clr-accent);
@@ -279,7 +283,7 @@ header{
     color: var(--clr-accent);
 }
 
-.nav_toggle{
+.nav__toggle{
     padding: .5em;
     background: transparent;
     border:0;
@@ -289,6 +293,27 @@ header{
     top: 1em;
     z-index: 1000;
 
+}
+/* when the nav is open */
+
+.nav-open .nav{
+    transform: translateX(0);  
+}
+
+.nav-open .nav__toggle {
+    position: fixed;
+}
+
+.nav-open .icon{
+    transform: rotate(.625turn);
+}
+
+.nav-open .icon::before {
+    transform: rotate(90deg) translateX(-6px);
+}
+
+.nav-open .icon::after {
+    opacity: 0;
 }
 
 .icon{
@@ -300,7 +325,7 @@ header{
 .icon,
 .icon::before,
 .icon::after {
-    background: var(--clr-dark);
+    background: var(--clr-light);
     width: 2em;
     height: 3px;
     border-radius: 1em;
